@@ -1,8 +1,8 @@
 <template>
   <div>
-    <md-button to="">Home</md-button>
-    <md-button to="" class="md-primary">Create</md-button>
-    <md-button to="" class="md-accent">Settings</md-button>
+    <md-button to="/">Home</md-button>
+    <md-button to="/create" class="md-primary">Create Report</md-button>
+    <md-button to class="md-accent">Settings</md-button>
   </div>
 </template>
 
