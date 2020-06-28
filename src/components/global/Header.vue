@@ -4,6 +4,6 @@
     <md-tab id="tab-post" md-label="Create Report" to="/create"></md-tab>
     <md-tab id="tab-list" md-label="Report List" to="/list"></md-tab>
     <md-tab id="tab-settings" md-label="settings"></md-tab>
-    <md-tab id="tab-favorites" md-label="Favorites"></md-tab>
+    <md-tab id="tab-signup" md-label="Sign Up" to="/signup"></md-tab>
   </md-tabs>
 </template>
