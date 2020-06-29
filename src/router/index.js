@@ -5,6 +5,7 @@ const Home = () => import('@/components/Home')
 const Create = () => import('@/components/CreateReport')
 const List = () => import('@/components/ReportList')
 const SignUp = () => import('@/components/SignUp')
+const Login = () => import('@/components/Login')
 
 Vue.use(Router)
 
@@ -33,6 +34,12 @@ export default new Router({
       path: '/signup',
       name: 'SignUp',
       component: SignUp
+    },
+
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     }
   ]
 })
