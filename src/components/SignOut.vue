@@ -12,7 +12,7 @@ export default {
       .auth()
       .signOut()
       .then(function() {
-        // 正常にsignupできた時の処理
+        // 正常にsignoutできた時の処理
         self.$router.push('/login')
       })
   }
