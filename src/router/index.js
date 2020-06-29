@@ -6,6 +6,7 @@ const Create = () => import('@/components/CreateReport')
 const List = () => import('@/components/ReportList')
 const SignUp = () => import('@/components/SignUp')
 const Login = () => import('@/components/Login')
+const SignOut = () => import('@/components/SignOut')
 
 Vue.use(Router)
 
@@ -40,6 +41,12 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+
+    {
+      path: '/signout',
+      name: 'SignOut',
+      component: SignOut
     }
   ]
 })
