@@ -38,8 +38,8 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(function() {
-          // 正常にsignupできた時の処理
-          self.$router.push('/')
+          // 正常にloginできた時の処理
+          window.location.href = '/'
         })
         .catch(function() {
           // エラー発生時の処理
