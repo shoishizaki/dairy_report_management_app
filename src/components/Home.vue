@@ -1,24 +1,52 @@
 <template>
   <div class="home">
-    <h1>Dairy Report management App</h1>
-    <h2>Let's write Dairy Report!</h2>
-    <div class="sign-up-button">
-      <md-button class="md-raised md-primary">Sign Up</md-button>
-    </div>
+    <h3 v-if="isAuthenticated">Welcome to Dairy Report management App</h3>
+    <div v-else>
+      <h1>Dairy Report management App</h1>
+      <h2>Let's write Dairy Report!</h2>
+      <div class="sign-up-button">
+        <md-button class="md-raised md-primary">Sign Up</md-button>
+      </div>
 
-    <div class="write-rearon-area">
-      <div class="write-reason-text-area">
-        <h3>Good things to write</h3>
-        <li>You can keep a daily record so you can always look back.</li>
-        <li>You can make time to think about the day.</li>
-        <li>And you can grow.</li>
-        <h4>As a result you can make your dreams come true.</h4>
+      <div class="write-rearon-area">
+        <div class="write-reason-text-area">
+          <h3>Good things to write</h3>
+          <li>You can keep a daily record so you can always look back.</li>
+          <li>You can make time to think about the day.</li>
+          <li>And you can grow.</li>
+          <h4>As a result you can make your dreams come true.</h4>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<script></script>
+<script>
+import firebase from '../firebase/firestore'
+
+export default {
+  data() {
+    return {
+      email: null
+    }
+  },
+
+  computed: {
+    isAuthenticated() {
+      return this.email !== null
+    }
+  },
+
+  created: function() {
+    const self = this
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        self.email = user.email
+      }
+    })
+  }
+}
+</script>
 
 <style scoped>
 h1 {
@@ -27,6 +55,10 @@ h1 {
 
 h2 {
   text-align: center;
+}
+
+h3 {
+  margin-left: 60px;
 }
 
 .sign-up-button {
