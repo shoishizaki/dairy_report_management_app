@@ -28,22 +28,28 @@ export default {
   },
 
   created: function() {
-    const self = this
-    firebase
-      .firestore()
-      .collection('report')
-      .get()
-      .then(snapShot => {
-        snapShot.forEach(doc => {
-          self.reports.push({
-            dairy_report: doc.data().dairy_report,
-            date: doc.data().date.toDate(),
-            memo: doc.data().memo,
-            literature_url: doc.data().literature_url,
-            report_id: doc.id
+    this.getReport()
+  },
+
+  methods: {
+    getReport() {
+      const self = this
+      firebase
+        .firestore()
+        .collection('report')
+        .get()
+        .then(snapShot => {
+          snapShot.forEach(doc => {
+            self.reports.push({
+              dairy_report: doc.data().dairy_report,
+              date: doc.data().date.toDate(),
+              memo: doc.data().memo,
+              literature_url: doc.data().literature_url,
+              report_id: doc.id
+            })
           })
         })
-      })
+    }
   }
 }
 </script>
