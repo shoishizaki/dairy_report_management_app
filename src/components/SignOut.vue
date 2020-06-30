@@ -7,13 +7,12 @@ import firebase from '../firebase/firestore'
 
 export default {
   created: function() {
-    const self = this
     firebase
       .auth()
       .signOut()
       .then(function() {
         // 正常にsignoutできた時の処理
-        self.$router.push('/login')
+        window.location.href = '/login'
       })
   }
 }

@@ -41,6 +41,7 @@ import firebase from '../firebase/firestore'
 export default {
   data() {
     return {
+      email: null,
       date: null,
       dairy_report: null,
       memo: null,
@@ -51,11 +52,26 @@ export default {
     }
   },
 
+  created: function() {
+    const self = this
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        self.email = user.email
+      } else {
+        self.$router.push('/login')
+      }
+    })
+  },
+
   computed: {
     messageClass() {
       return {
         'md-invalid': this.hasMessages
       }
+    },
+
+    isAuthenticated() {
+      return this.email !== null
     }
   },
 
@@ -74,6 +90,7 @@ export default {
 
       // 保存用JSONデータを作成
       const saveData = {
+        email: this.email,
         date: this.date,
         dairy_report: this.dairy_report,
         memo: this.memo,
