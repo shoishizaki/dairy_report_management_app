@@ -23,12 +23,13 @@ export default {
 
   data() {
     return {
+      email: null,
       reports: []
     }
   },
 
   created: function() {
-    this.getReport()
+    this.getListPageInfo()
   },
 
   methods: {
@@ -37,6 +38,7 @@ export default {
       firebase
         .firestore()
         .collection('report')
+        .where('email', '==', this.email)
         .get()
         .then(snapShot => {
           snapShot.forEach(doc => {
@@ -49,6 +51,18 @@ export default {
             })
           })
         })
+    },
+
+    getListPageInfo() {
+      const self = this
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          self.email = user.email
+          self.getReport()
+        } else {
+          self.$router.push('/login')
+        }
+      })
     }
   }
 }
