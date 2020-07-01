@@ -5,7 +5,9 @@
       <h1>Dairy Report management App</h1>
       <h2>Let's write Dairy Report!</h2>
       <div class="sign-up-button">
-        <md-button class="md-raised md-primary">Sign Up</md-button>
+        <md-button class="md-raised md-primary" @click="goToSignUp"
+          >Go to Sign Up</md-button
+        >
       </div>
 
       <div class="write-rearon-area">
@@ -44,6 +46,12 @@ export default {
         self.email = user.email
       }
     })
+  },
+
+  methods: {
+    goToSignUp() {
+      this.$router.push('/signup')
+    }
   }
 }
 </script>

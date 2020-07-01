@@ -5,11 +5,6 @@
       md-content="Sending failed for some reason.If you do not know the cause, please contact the app creator."
       md-confirm-text="OK"
     />
-    <md-dialog-alert
-      :md-active.sync="second"
-      md-title="Success sign up!"
-      md-content="Create your account."
-    />
     <h1>Sign Up</h1>
     <md-divider />
     <md-field :class="messageClass">
@@ -60,9 +55,7 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(function() {
           // 正常にsignupできた時の処理
-          self.second = true
-          self.email = null
-          self.password = null
+          window.location.href = '/'
         })
         .catch(function() {
           // エラー発生時の処理
