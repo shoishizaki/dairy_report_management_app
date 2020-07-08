@@ -1,6 +1,15 @@
 <template>
   <div class="home">
-    <h3 v-if="isAuthenticated">Welcome to Dairy Report management App</h3>
+    <div v-if="isAuthenticated">
+      <h3>Welcome to Dairy Report management App</h3>
+      <h4>2020/7/2</h4>
+      <p>
+        Released daily report management application.<br />
+        Add function<br />
+        ・Create dairy report<br />
+        ・Read dairy report<br />
+      </p>
+    </div>
     <div v-else>
       <h1>Dairy Report management App</h1>
       <h2>Let's write Dairy Report!</h2>
@@ -66,6 +75,14 @@ h2 {
 }
 
 h3 {
+  margin-left: 60px;
+}
+
+h4 {
+  margin-left: 60px;
+}
+
+p {
   margin-left: 60px;
 }
 
