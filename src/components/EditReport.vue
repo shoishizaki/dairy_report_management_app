@@ -32,7 +32,7 @@
       <md-textarea v-model="literature_url"></md-textarea>
     </md-field>
     <md-button class="md-raised md-primary" @click="updateReport"
-      >Edit</md-button
+      >Update</md-button
     >
   </div>
 </template>
