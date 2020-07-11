@@ -17,6 +17,11 @@
         :memo="report.memo"
         :literature_url="report.literature_url"
       ></list-modal>
+      <md-button
+        class="md-primary md-raised"
+        :to="{ name: 'Edit', params: { reportId: report.report_id } }"
+        >To edit page</md-button
+      >
       <md-dialog-confirm
         :md-active.sync="active"
         md-title="Do you really want to delete this?"
@@ -27,7 +32,7 @@
         @md-confirm="deleteReport"
       />
       <md-button
-        class="md-primary md-raised"
+        class="md-accent md-raised"
         @click=";(active = true), getEditReportId(report.report_id)"
         >Delete</md-button
       >

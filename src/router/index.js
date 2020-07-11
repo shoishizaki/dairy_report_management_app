@@ -7,6 +7,7 @@ const List = () => import('@/components/ReportList')
 const SignUp = () => import('@/components/SignUp')
 const Login = () => import('@/components/Login')
 const SignOut = () => import('@/components/SignOut')
+const Edit = () => import('@/components/EditReport')
 
 Vue.use(Router)
 
@@ -47,6 +48,12 @@ export default new Router({
       path: '/signout',
       name: 'SignOut',
       component: SignOut
+    },
+
+    {
+      path: '/edit/:reportId',
+      name: 'Edit',
+      component: Edit
     }
   ]
 })
