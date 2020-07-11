@@ -2,6 +2,12 @@
   <div class="home">
     <div v-if="isAuthenticated">
       <h3>Welcome to Dairy Report management App</h3>
+      <h4>2020/7/11</h4>
+      <p>
+        Add function<br />
+        ・Delete dairy report<br />
+        ・Edit dairy report<br />
+      </p>
       <h4>2020/7/2</h4>
       <p>
         Released daily report management application.<br />
