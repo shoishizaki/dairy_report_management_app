@@ -77,7 +77,6 @@ export default {
 
   methods: {
     sendItem() {
-      // 送るコレクションを指定
       if (this.dairy_report == null) {
         this.hasMessages = true
         return
@@ -85,6 +84,7 @@ export default {
       if (this.date == null) {
         this.date = new Date()
       }
+      // 送るコレクションを指定
       const colref = firebase.firestore().collection('report')
       const self = this
 
