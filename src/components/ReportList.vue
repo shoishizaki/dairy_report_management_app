@@ -1,13 +1,36 @@
 <template>
   <div>
+    <md-dialog-alert
+      :md-active.sync="first"
+      md-content="Deletion failed.If you don't know the cause, please contact the creator."
+      md-confirm-text="OK"
+    />
     <h1>Report List</h1>
-    <div v-for="report in reports" v-bind:key="report.report_id">
+    <div
+      class="display_report"
+      v-for="report in reports"
+      v-bind:key="report.report_id"
+    >
       <list-modal
         :date="report.date"
         :report="report.dairy_report"
         :memo="report.memo"
         :literature_url="report.literature_url"
       ></list-modal>
+      <md-dialog-confirm
+        :md-active.sync="active"
+        md-title="Do you really want to delete this?"
+        md-content="Once deleted, it cannot be restored."
+        md-confirm-text="Yes"
+        md-cancel-text="No"
+        @md-cancel="onCancel"
+        @md-confirm="deleteReport"
+      />
+      <md-button
+        class="md-primary md-raised"
+        @click=";(active = true), getEditReportId(report.report_id)"
+        >Delete</md-button
+      >
     </div>
   </div>
 </template>
@@ -24,7 +47,10 @@ export default {
   data() {
     return {
       email: null,
-      reports: []
+      reports: [],
+      active: false,
+      edit_report_id: null,
+      first: false
     }
   },
 
@@ -63,6 +89,29 @@ export default {
           self.$router.push('/login')
         }
       })
+    },
+
+    getEditReportId(reportId) {
+      this.edit_report_id = reportId
+    },
+
+    deleteReport() {
+      const self = this
+      firebase
+        .firestore()
+        .collection('report')
+        .doc(this.edit_report_id)
+        .delete()
+        .then(function() {
+          self.$router.go({ path: '/list' })
+        })
+        .catch(function() {
+          self.first = true
+        })
+    },
+
+    onCancel() {
+      this.edit_report_id = null
     }
   }
 }
@@ -71,5 +120,10 @@ export default {
 <style scoped>
 h1 {
   margin-left: 60px;
+}
+
+.display_report {
+  margin-left: 50px;
+  display: flex;
 }
 </style>
