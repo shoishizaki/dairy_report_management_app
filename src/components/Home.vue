@@ -2,6 +2,16 @@
   <div class="home">
     <div v-if="isAuthenticated">
       <h3>Welcome to Dairy Report management App</h3>
+      <h4>2020/7/12</h4>
+      <p>
+        Open Page<br />
+        ・settings page(password reset)<br /><br />
+        Add function<br />
+        ・password reset function(2 patterns)<br />
+        Before login, you can go to the email sending page from the link on the
+        login page.<br />
+        After login, you can do it on the settings page.<br />
+      </p>
       <h4>2020/7/11</h4>
       <p>
         Add function<br />
