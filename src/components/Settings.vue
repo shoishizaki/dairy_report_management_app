@@ -78,7 +78,7 @@ export default {
 
   methods: {
     resetPassword() {
-      if (!this.password) {
+      if (!this.current_password || !this.new_password) {
         this.hasMessages = true
         return
       }
