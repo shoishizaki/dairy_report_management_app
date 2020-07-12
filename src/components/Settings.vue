@@ -78,6 +78,10 @@ export default {
 
   methods: {
     resetPassword() {
+      if (!this.password) {
+        this.hasMessages = true
+        return
+      }
       const self = this
       const user = firebase.auth().currentUser
       // 再認証のcredentialを取得する

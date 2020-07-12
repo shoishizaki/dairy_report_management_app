@@ -2,22 +2,24 @@
   <div>
     <md-dialog-alert
       :md-active.sync="first"
-      md-content="Sending failed for some reason.If you do not know the cause, please contact the app creator."
+      md-content="Email address does not exist. Please check your email address again."
       md-confirm-text="OK"
     />
-    <h1>Sign Up</h1>
+    <md-dialog-alert
+      :md-active.sync="second"
+      md-title="Send Email"
+      md-content="A reset link has been sent to your registered email address."
+    />
+    <h1>Password Reset by Email</h1>
     <md-divider />
     <md-field :class="messageClass">
-      <label>E-mail(Required Field)</label>
+      <label>E-mail</label>
       <md-input v-model="email"></md-input>
       <span class="md-error">E-Mail is a required item</span>
     </md-field>
-    <md-field :class="messageClass">
-      <label>Password(Required Field)</label>
-      <md-input v-model="password" type="password"></md-input>
-      <span class="md-error">Password is a required item</span>
-    </md-field>
-    <md-button class="md-raised md-primary" @click="signUp">Sign Up</md-button>
+    <md-button class="md-raised md-primary" @click="sendEmail"
+      >send email</md-button
+    >
   </div>
 </template>
 
@@ -28,9 +30,9 @@ export default {
   data() {
     return {
       email: null,
-      password: null,
       hasMessages: false,
-      first: false
+      first: false,
+      second: false
     }
   },
 
@@ -43,21 +45,19 @@ export default {
   },
 
   methods: {
-    signUp: function() {
-      if (!this.email || !this.password) {
+    sendEmail: function() {
+      if (!this.email) {
         this.hasMessages = true
         return
       }
       const self = this
       firebase
         .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then(function() {
-          // 正常にsignupできた時の処理
-          window.location.href = '/'
+        .sendPasswordResetEmail(this.email)
+        .then(() => {
+          self.second = true
         })
-        .catch(function() {
-          // エラー発生時の処理
+        .catch(() => {
           self.first = true
         })
     }
