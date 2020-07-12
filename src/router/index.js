@@ -8,6 +8,8 @@ const SignUp = () => import('@/components/SignUp')
 const Login = () => import('@/components/Login')
 const SignOut = () => import('@/components/SignOut')
 const Edit = () => import('@/components/EditReport')
+const Settings = () => import('@/components/Settings')
+const PasswordReset = () => import('@/components/PasswordResetByEmail')
 
 Vue.use(Router)
 
@@ -54,6 +56,18 @@ export default new Router({
       path: '/edit/:reportId',
       name: 'Edit',
       component: Edit
+    },
+
+    {
+      path: '/settings',
+      name: 'Settings',
+      component: Settings
+    },
+
+    {
+      path: '/password_reset',
+      name: 'PasswordReset',
+      component: PasswordReset
     }
   ]
 })

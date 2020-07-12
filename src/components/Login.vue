@@ -16,6 +16,9 @@
       <md-input v-model="password" type="password"></md-input>
     </md-field>
     <md-button class="md-raised md-primary" @click="login">Login</md-button>
+    <router-link class="link" to="/password_reset"
+      >If you forgot your password, click here</router-link
+    >
   </div>
 </template>
 
@@ -64,5 +67,11 @@ h1 {
 .md-button {
   position: relative;
   left: 50px;
+  top: 40px;
+}
+
+.link {
+  position: relative;
+  right: 50px;
 }
 </style>
