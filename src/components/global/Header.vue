@@ -18,6 +18,7 @@
         v-if="isAuthenticated"
         id="tab-settings"
         md-label="settings"
+        to="/settings"
       ></md-tab>
       <div v-else>
         <md-tab id="tab-signup" md-label="Sign Up" to="/signup"></md-tab>
