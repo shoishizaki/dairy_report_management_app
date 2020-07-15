@@ -20,17 +20,20 @@
     <md-divider />
     <md-field :class="messageClass">
       <label>Dairy Report(Required Field)</label>
-      <md-textarea v-model="dairy_report"></md-textarea>
+      <md-textarea v-model="dairy_report" md-autogrow></md-textarea>
       <span class="md-error">Daily report is a required item</span>
     </md-field>
+    <md-divider />
     <md-field>
       <label>Memo</label>
-      <md-textarea v-model="memo"></md-textarea>
+      <md-textarea v-model="memo" md-autogrow></md-textarea>
     </md-field>
+    <md-divider />
     <md-field>
       <label>Literature URL</label>
-      <md-textarea v-model="literature_url"></md-textarea>
+      <md-textarea v-model="literature_url" md-autogrow></md-textarea>
     </md-field>
+    <md-divider />
     <md-button class="md-raised md-primary" @click="sendItem">Submit</md-button>
   </div>
 </template>
@@ -143,5 +146,6 @@ p {
 .md-button {
   position: relative;
   left: 50px;
+  margin-top: 20px;
 }
 </style>
