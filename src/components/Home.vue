@@ -2,6 +2,12 @@
   <div class="home">
     <div v-if="isAuthenticated">
       <h3>Welcome to Dairy Report management App</h3>
+      <h4>2020/7/15</h4>
+      <p>
+        update textarea<br />
+        ・create report page<br />
+        ・edit report page
+      </p>
       <h4>2020/7/12</h4>
       <p>
         Open Page<br />
